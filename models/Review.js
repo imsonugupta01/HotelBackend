@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const reviewSchema = new mongoose.Schema(
   {
     tourId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Tour', // Reference to the Tour model
+      type: String,
+      // ref: 'Tour', // Reference to the Tour model
       required: true,
     },
     userId: {

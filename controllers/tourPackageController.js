@@ -106,3 +106,23 @@ exports.GetTourDetail = async (req, res) => {
     
 //   }
 // }
+
+// const TourPackage = require('../models/TourPackage'); // Ensure correct model import
+
+exports.getTourById = async (req, res) => {
+  try {
+    // Use findById for retrieving a single document by ID
+    const tour = await TourPackage.findById(req.body.tourId);
+
+    // Check if the tour exists
+    if (!tour) {
+      return res.status(404).json({ message: "Tour not found" ,id:req.body.tourId});
+    }
+
+    // Respond with the tour data
+    res.status(200).json(tour);
+  } catch (error) {
+    console.error("Error fetching tour by ID:", error);
+    res.status(500).json({ message: "Error retrieving tour data" });
+  }
+};

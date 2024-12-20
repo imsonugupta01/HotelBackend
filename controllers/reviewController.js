@@ -26,3 +26,13 @@ exports.AddReview=async (req,res)=>{
       res.status(500).json({ error: 'Internal server error' });
     }
 }
+
+exports.getAllReview=async(req,res)=>{
+    try {
+        const review=await Review.find()
+        res.status(200).json(review);
+    } catch (error) {
+        res.status(500).json({ message: 'Error retrieving review' });
+        
+    }
+}
